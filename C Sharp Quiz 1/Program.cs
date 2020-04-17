@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace C_Sharp_Quiz_1
 {
@@ -59,7 +60,9 @@ namespace C_Sharp_Quiz_1
             //7 - Write a method that has one string parameter. By Using predicate check if
             //that string has vowel sounds and print all the vowel sounds in the output. 
             string stringHasVowel = "Find all the vowel in this phrase";
+            string stringHasNoVowel = "N v n ths phrs";
             PickUpVowel(stringHasVowel);
+            PickUpVowel(stringHasNoVowel);
             //8 - (Bonus)Use Event / Func / Action / delegate with 2 classes(student,
             //RegisterStudentOperation).If the student graduates, notifies the
             //RegisterStudentOperation and Prints a message in the console.
@@ -93,7 +96,8 @@ namespace C_Sharp_Quiz_1
         }
         static void PickUpVowel(string str)
         {
-            string[] arrayString = str.Split();
+            //string[] arrayString = str.Split();
+            string[] arrayString = Regex.Split(str, string.Empty);
             string[] arrayResult = Array.FindAll(arrayString, (c) => 
             {
                 string[] arrayVowel = new string[] { "a","e","i","o","u" };
@@ -112,11 +116,13 @@ namespace C_Sharp_Quiz_1
             }
             else
             {
+                Console.Write("All the vowels in this phrase: ");
                 foreach(string st in arrayResult)
                 {
                     Console.Write(st);
                 }
             }
+            Console.WriteLine();
         }
     }
 }
